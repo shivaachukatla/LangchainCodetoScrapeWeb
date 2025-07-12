@@ -1,0 +1,416 @@
+/* Main layout */
+.main-layout {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 2rem;
+    padding: 1rem;
+}
+
+/* Sidebar */
+.sidebar {
+    position: sticky;
+    top: 1rem;
+    height: fit-content;
+}
+
+.search-container {
+    background: #ffffff;
+    border: 1px solid #dddbda;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Content area */
+.content-area {
+    min-width: 0;
+}
+
+/* Main content (vehicle grid and details) */
+.main-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two equal columns */
+    gap: 2rem;
+    margin-top: 2rem;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.vehicle-grid-section {
+    grid-column: 1 / -1; /* Span full width */
+    min-width: 0;
+}
+
+.vehicle-details-panel {
+    position: static;
+    height: fit-content;
+    width: 100%;
+}
+.calendar-panel {
+    position: static;
+    height: fit-content;
+    width: 100%;
+}
+
+.results-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+/* Responsive breakpoints */
+@media (max-width: 1400px) {
+    .results-container {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (max-width: 1200px) {
+    .results-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 900px) {
+    .results-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .results-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+.vehicle-card {
+    border-radius: 0.25rem;
+    border: 1px solid #dddbda;
+    background: #ffffff;
+    padding: 1.5rem;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.vehicle-card:hover {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-color: #0070d2;
+    transform: translateY(-2px);
+}
+
+.vehicle-card.selected-vehicle {
+    border: 2px solid #0070d2;
+    box-shadow: 0 0 0 1px #0070d2;
+}
+
+.lightning-formatted-rich-text {
+    max-width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 0.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid #dddbda;
+}
+
+.selected-vehicle-image {
+    max-width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 0.25rem;
+    border: 1px solid #dddbda;
+}
+
+.vehicle-card .Available {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 0.25rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.0625rem;
+    background: #04844b;
+    color: #ffffff;
+}
+
+.vehicle-card .Not-Available {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 0.25rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.0625rem;
+    background: #c23934;
+    color: #ffffff;
+}
+
+.error-message {
+    max-width: 800px;
+    margin: 1.5rem auto;
+}
+
+.pagination-container {
+    margin: 2rem auto 0 auto;
+    display: inline-block;
+}
+
+.vehicle-card .vehicle-name {
+    color: #16325c;
+    margin-bottom: 0.5rem;
+}
+
+.vehicle-card .vehicle-details {
+    color: #706e6b;
+    margin-bottom: 0.25rem;
+}
+
+.vehicle-card lightning-button {
+    width: 100%;
+}
+
+/* Form styling */
+.search-container lightning-combobox ::part(label),
+.search-container lightning-input ::part(label) {
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    color: #16325c !important;
+    margin-bottom: 0.5rem !important;
+}
+
+.search-container lightning-combobox,
+.search-container lightning-input {
+    margin-bottom: 1.5rem !important;
+}
+
+.search-container lightning-button {
+    margin-top: 1rem !important;
+    margin-bottom: 1rem !important;
+}
+
+/* Contact search styling */
+.contact-search-container {
+    position: relative;
+}
+
+.contact-results-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border: 1px solid #dddbda;
+    border-radius: 0.25rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.contact-result-item {
+    padding: 0.75rem;
+    cursor: pointer;
+    border-bottom: 1px solid #f3f2f2;
+    transition: background-color 0.2s ease;
+}
+
+.contact-result-item:hover {
+    background-color: #f3f2f2;
+}
+
+.contact-result-item:last-child {
+    border-bottom: none;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-name {
+    font-weight: 600;
+    color: #16325c;
+    margin-bottom: 0.25rem;
+}
+
+.contact-email {
+    font-size: 0.875rem;
+    color: #706e6b;
+}
+
+.selected-contact {
+    background: #f3f2f2;
+    border: 1px solid #dddbda;
+    border-radius: 0.25rem;
+    padding: 0.75rem;
+    margin-top: 0.5rem;
+}
+
+.selected-contact .contact-name {
+    font-weight: 600;
+    color: #16325c;
+}
+
+.selected-contact .contact-email {
+    font-size: 0.875rem;
+    color: #706e6b;
+}
+.lease-confirmation-panel {
+    max-width: 600px;
+    margin: 2rem auto;
+}
+
+.calendar-container {
+    background: white;
+    border: 1px solid #dddbda;
+    border-radius: 0.25rem;
+    padding: 1rem;
+    margin-top: 1rem;
+}
+
+.calendar-header {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 2px;
+    margin-bottom: 1rem;
+}
+
+.calendar-day-header {
+    text-align: center;
+    font-weight: 600;
+    color: #706e6b;
+    padding: 0.5rem;
+    font-size: 0.875rem;
+}
+
+.calendar-date {
+    padding: 8px;
+    text-align: center;
+    border: 1px solid #dddbda;
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.calendar-date-text {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.calendar-date.empty {
+    background: #f8f9fa;
+    cursor: default;
+}
+
+.calendar-date.past {
+    background: #f8f9fa;
+    color: #c9c7c5;
+}
+
+.calendar-date.today {
+    background-color: #cce5ff;
+    color: #004085;
+    font-weight: bold;
+}
+
+.calendar-date.available {
+    background: #d4edda;
+    color: #155724;
+}
+
+.calendar-date.unavailable {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.calendar-date:hover:not(.empty):not(.past) {
+    opacity: 0.8;
+}
+
+.date-text {
+    font-size: 0.875rem;
+}
+
+.today-text {
+    font-weight: 600;
+}
+
+.calendar-legend {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+}
+
+.legend-color {
+    width: 16px;
+    height: 16px;
+    border-radius: 2px;
+}
+
+.legend-color.available {
+    background: #d4edda;
+}
+
+.legend-color.unavailable {
+    background: #f8d7da;
+}
+
+.legend-color.today {
+    background: #0070d2;
+}
+
+/* Responsive design */
+@media (max-width: 1200px) {
+    .main-layout {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .sidebar {
+        position: static;
+    }
+    
+    .main-content {
+        grid-template-columns: 1fr;
+    }
+
+    .vehicle-details-panel,
+    .calendar-panel {
+        position: static;
+        width: 100%;
+    }
+    
+    .vehicle-details-panel {
+        position: static;
+    }
+}
+
+@media (max-width: 768px) {
+    .main-layout {
+        padding: 0.5rem;
+    }
+    
+    .results-container {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .pagination-container {
+        margin: 1rem;
+    }
+}
